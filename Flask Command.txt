@@ -1,0 +1,85 @@
+=>//////////////////// for vertual environment create:-
+go to file directory:-
+
+	python -m venv venv
+		OR
+	python -m venv myvenv[Here name to create folder of clooection python environment]
+
+Activate vertual environment:-
+	dir>venv>script\activate
+
+go to main project directory:-
+		cd..
+
+After active virtual environment:-
+	(venv) C:\Users\HP\Desktop\project>
+
+deactivate virtual environment:-
+	(venv) C:\Users\HP\Desktop\project>deactivate
+
+////////////////////////flask development run/////////
+
+install dotenv library to run .flaskenv file:
+	(venv) C:\Users\HP\Desktop\project>pip install python-dotenv
+
+Start server: flask run
+Stop server: Ctrl + C
+
+==>>for run app as development mode
+
+set FLASK_APP=hello
+set FLASK_ENV=development
+flask run
+
+==>install bootstarpe in project
+	pip install flask-bootstrape
+
+////////////////////GUNICORN Server//////////////////////////////////
+install gunicorn server which is part of wsgi:=
+	pip install gunicorn
+
+/////////////////////////////////Deploying on web server///////////////////
+I use heroku for web deploying..
+
+heroku Password:=
+jaymind281098@gmail.com
+82382JDp@tel
+
+create file name: Procfile and add line
+	web: gunicorn urlshortner:app
+
+then,In CMD: and create requirement file that contain all required package for app...
+	pip freeze > requirements.txt
+
+then create .gitignore file for specify what we don't want to e pushed over to version...
+	myvenv/
+	__pycache__/
+
+
+///////////////////////////////Database PostgreSQL setup////////////////////////
+
+==>Psycopg2 is databas driver or database adapter that facilites the communication between Python pograms and database.
+	pip install psycopg2
+
+==>SQLAlchemy is lirary used as an object Relational Mapper(ORM) tool that traslate python classs to tales on relational database and automatically convert function calls to SQL statements
+	pip install Flask-SQLAlchemy	
+
+==>import SQLAlchemy :=
+	import flask_sqlalchemy from SQLAlchemy
+	//app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql+psycopg2://postgres:password@localhost/quotes'
+	app.config['SQLALCHEMY_DATABASE_URI'] ='postgres://kutylncrmosvvrvif:56786171441e668e08b0b5bda470a3673e6e879f94466b5e7865eb9ad18268c1f807c3@ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/d7aofkhqpvufo2mq'
+	app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
+
+==> create table:=
+	db = SQLAlchemy(app)
+
+	class Favquotes(db.Model):
+		id = db.Column(db.Integer,primary_key=True)
+		author = db.Column(db.String(30))
+		quote = db.Column(db.String(2000))
+
+then,
+	(venv) C:\Users\HP\Desktop\project>py
+	>>>from quotes import db
+	>>>db.create_all()
+	>>>exit()

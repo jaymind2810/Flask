@@ -1,0 +1,6 @@
+//////////pip////////////////
+==>install packages...
+	pip install package[here package name]
+
+==>show all installed pip packages:-
+	pip list

@@ -1,0 +1,160 @@
+//////////////////////////////BASIC FUNCTIONALITY////////////////////
+Check git:-
+	git
+
+Check Version:-
+	git --version
+
+help:-
+	git help
+
+specific command help:-
+	git help add
+
+Clean tha screen:-
+	clear
+
+Show config list:
+	git config --list
+
+set username:-
+	git config --global user.name "jayminpatel2810"
+
+set user email:-
+	git config --global user.email "jaymind281098@gmail.com"
+
+////////////////////////////First Project////////////////////////////////
+define folder path:-
+	cd desktop/Git_folder
+
+initialize repository:-
+	git init
+
+Check Status:-
+	git status
+
+Create File:-
+	touch hello_world.py
+
+Give all list on folder:-
+	ls
+
+Add into gittarackeable:-
+	git add hello_world.py
+
+Add commit for what changes made in file:-
+	git commit -m "My first commite using git"
+
+For Showing all git history:-
+	git log
+
+To see difference between fille:-
+	git diff
+
+Remove file from git-
+	git rm greeting.py hello_world.py
+
+Remove Directory:-
+	git rm new
+
+add all files on git,
+	git add .
+
+///////////////////////////////////UPLOAD FILE ON GIT HUB//////////////////////
+1. go to local folder of we want to upload on github.
+	cd desktop/Git_folder
+
+then,
+	git remote add origin "add url from git repository"
+	Ex:- git remote add origin https://github.com/jayminpatel2810/firstgithub.com
+
+then,
+	git remote
+
+then,
+	git remote -v
+
+push files...,
+	git push -u origin master
+		or
+	git push origin master
+
+////////////////////////////////some function///////////////////////
+Blame : for issues suggestion
+raw: used to copy original text og file..
+history : history of repositotry 
+
+.gitignore:-that is used to remove unneccessory file
+/////////////////////////////.gitignore///////////////////////// 
+==> this is used for if we don't want to add some file in git repository
+then this .gitignore file used..[here, myenv folder don't want to upload]
+	$ echo "myenv" >> .gitignore
+////////////////////Make change when add all file in git base////////////////////////
+==> ADD all files on git base:
+	git add .
+==>Then,
+	git status
+==>Then, if we want to remove some file from add all file on git so
+   [here remove cached files from project[mysite]]
+	git rm -r --cached mysite/__pycache__	 
+
+==>Add that removed file into .gitignore file
+	echo "__pycache__" >> .gitignore
+==> then,
+	git status
+==>Add .gitignore file on git
+	git add .gitignore
+==> Committing files and directiory to version control
+	git commit -m "This is removed file of myvenv files. django todolist project"
+==>Check status it is nothing or not..
+	git ststus
+==>Then, Add code to github so first to create new git repositry and belove code 
+	$ git remote add origin https://github.com/jayminpatel2810/todoapp.git
+==>then,
+	$ git branch -M main
+==>Then,
+	$ git push -u origin main
+
+==>After changes in some file then add to github file so do belove
+	$ git status
+==>then show what diff in file so run command
+	$ git diff
+==>then,below command automatically add changed files to github
+	$ git commit -am "Displaying Database items"
+==>then,
+	$ git branch -M main
+==>Then,
+	$ git push -u origin main
+
+
+///////////////////////////Make changes in someone repo/////////////////
+
+fork := It is used to save some other repository in our github account.
+for download locaton:=
+	cd desktop
+
+then download repo in local computer
+	git clone "repo url"
+
+then,
+	cd form
+
+then after make changes on files after
+	git status
+	git add jaymin.py
+	git commit -m "To know which file changed"
+	git status
+	git push origin master
+	git status
+
+////////////////////////////////////CREATING NEW BRANCHEAS//////////////////
+
+create brances:-
+	git branch "descriptive-greeting"
+
+show all brances:=
+	git branch
+
+Move one branch to another branch:=
+	git checkout descriptive-greeting
+
