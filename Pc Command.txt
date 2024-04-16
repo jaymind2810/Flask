@@ -1,5 +1,0 @@
-=>>>To control speed of a video in VLC using shortcuts:
-
-Speed up: ] Key in keyboard
-Speed down: [ Key in keyboard
-Normal speed: = Key in keyboard

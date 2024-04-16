@@ -1,0 +1,73 @@
+=>//////////////////// virtual environment create: /////////////////////////////////////////////
+
+	python -m venv venv
+		OR
+	python -m venv venv  [Here name to create folder of clooection python environment]
+
+Activate vertual environment:-
+	source venv/bin/activate
+
+deactivate virtual environment:-
+	deactivate
+
+////////////////////////flask development run/////////
+
+==>>for run app as development mode
+
+	export FLASK_APP=hello
+	export FLASK_ENV=development
+	flask run
+	
+	OR
+	
+	flask --app run
+	
+	
+	
+///////////////////////////////Database PostgreSQL setup////////////////////////
+
+==>Psycopg2 is databas driver or database adapter that facilites the communication between Python pograms and database.
+	
+	pip3 install psycopg2-binary
+
+==>SQLAlchemy is lirary used as an object Relational Mapper(ORM) tool that traslate python classs to tales on relational database and automatically convert function calls to SQL statements
+	
+	pip3 install Flask-SQLAlchemy	
+
+==>import SQLAlchemy :=
+	
+	import flask_sqlalchemy from SQLAlchemy
+	
+	//app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql+psycopg2://postgres:password@localhost/quotes'
+				OR
+	app.config['SQLALCHEMY_DATABASE_URI'] ='postgres://kutylncrmosvvrvif:56786171441e668e08b0b5bda470a3673e6e879f94466b5e7865eb9ad18268c1f807c3@ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/d7aofkhqpvufo2mq'
+				OR
+	app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:postgres@localhost:5432/travelingdb"
+
+				
+	app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
+	
+	
+==> app.config['SQLALCHEMY_ECHO'] = True that is used to Sqlalchemy query log in terminal
+	
+	app.config['SQLALCHEMY_ECHO'] = False
+	
+
+
+--------------------------------- DataBase -------------------------------------------------------
+
+- First we have to create database first and then run server
+
+==> create table:=
+	db = SQLAlchemy(app)
+
+	class Favquotes(db.Model):
+		id = db.Column(db.Integer,primary_key=True)
+		author = db.Column(db.String(30))
+		quote = db.Column(db.String(2000))
+		
+	with app.app_context():
+	    db.create_all()
+
+
+
