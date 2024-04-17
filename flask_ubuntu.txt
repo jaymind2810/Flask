@@ -20,27 +20,31 @@ deactivate virtual environment:-
 	
 	OR
 	
-	flask --app run
+	flask --app hello run --debug --port=8000 --host=0.0.0.0
+	
+	OR
+	-- If python-dotenv is installed, running the flask command will set environment variables defined in the files .env and .flaskenv
+	
+	flask run
 	
 	
 	
 ///////////////////////////////Database PostgreSQL setup////////////////////////
 
 ==>Psycopg2 is databas driver or database adapter that facilites the communication between Python pograms and database.
-	
-	pip3 install psycopg2-binary
+==>SQLAlchemy is lirary used as an object Relational Mapper(ORM) tool that traslate python classs to tales on relational database and automatically convert function calls to SQL statements	
 
-==>SQLAlchemy is lirary used as an object Relational Mapper(ORM) tool that traslate python classs to tales on relational database and automatically convert function calls to SQL statements
-	
-	pip3 install Flask-SQLAlchemy	
+	pip3 install psycopg2-binary
+	pip3 install Flask-SQLAlchemy
+		
 
 ==>import SQLAlchemy :=
 	
 	import flask_sqlalchemy from SQLAlchemy
 	
-	//app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql+psycopg2://postgres:password@localhost/quotes'
+	app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql+psycopg2://postgres:password@localhost/quotes'
 				OR
-	app.config['SQLALCHEMY_DATABASE_URI'] ='postgres://kutylncrmosvvrvif:56786171441e668e08b0b5bda470a3673e6e879f94466b5e7865eb9ad18268c1f807c3@ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/d7aofkhqpvufo2mq'
+	app.config['SQLALCHEMY_DATABASE_URI'] ='postgres://kutylncrmosvvrvif:56786171441e668e7865eb9ad18268c1f807c3@ec2-st-1.compute.amazonaws.com:5432/d7aofkhqpvufo2mq'
 				OR
 	app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:postgres@localhost:5432/travelingdb"
 
@@ -68,6 +72,66 @@ deactivate virtual environment:-
 		
 	with app.app_context():
 	    db.create_all()
+
+
+
+
+=================================== Flask other ===================================================
+
+
+- To access parameters submitted in the URL (?key=value) you can use the args attribute:
+
+	searchword = request.args.get('key', '')
+
+---> Cookies
+
+	Get cookies =========> username = request.cookies.get('username')
+	
+	Set cookies =========> resp.set_cookie('username', 'the username')	
+	
+	
+---> Session
+
+	from flask import session
+	
+	Set ======> session['username'] = request.form['username']
+	Get ======> uname = session['username']
+	
+	
+---> Logging
+
+	app.logger.info('A value for debugging')
+	app.logger.debug('A value for debugging')
+	app.logger.warning('A warning occurred (%d apples)', 42)
+	app.logger.error('An error occurred')
+	app.logger.critical('A value for debugging')
+	
+	
+========================= Flask Testing ============================================
+
+pip install pytest coverage
+
+---> To run the tests, use the pytest command.
+
+	pytest
+
+---> To measure the code coverage of your tests, use the coverage command to run pytest instead of running it directly.
+
+	coverage run -m pytest
+	
+	coverage report
+	
+---> An HTML report allows you to see which lines were covered in each file:
+
+	$ coverage html
+    
+    This generates files in the htmlcov directory. Open htmlcov/index.html in your browser to see the report.
+    
+---> Bloprint : A Blueprint is a way to organize a group of related views and other code.
+	
+	bp = Blueprint('auth', __name__, url_prefix='/auth')
+
+
 
 
 
